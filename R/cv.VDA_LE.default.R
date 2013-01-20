@@ -45,7 +45,7 @@ function(x,y,kfold,lam.vec.1,lam.vec.2)
     
         	vda.out.train <- VDA_LE(data.train.x,data.train.y,lam.vec.1[i],lam.vec.2[j])
         	class.pred.test <- predict(vda.out.train,data.test.x)
-        	error.fold[fold] <- length(which(as.real(class.pred.test)!=data.test.y))/length(data.test.y)
+        	error.fold[fold] <- length(which(as.double(class.pred.test)!=data.test.y))/length(data.test.y)
  		 							#}   
  				 }
  	   error.cv[i,j]<-sum(error.fold)/kfold

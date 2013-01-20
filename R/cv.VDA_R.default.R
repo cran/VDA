@@ -35,7 +35,7 @@ function(x,y,k,lam.vec)
     for (ll in 1:length(lam.vec)){
       vda.out.train <- VDA_R(data.train.x,data.train.y,lambda=lam.vec[ll])
       class.pred.test <- predict(vda.out.train,data.test.x)
-      error.cv[ll,fold] <- length(which(as.real(class.pred.test)!=data.test.y))/length(data.test.y)
+      error.cv[ll,fold] <- length(which(as.double(class.pred.test)!=data.test.y))/length(data.test.y)
     }
   }
   

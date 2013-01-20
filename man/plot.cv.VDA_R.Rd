@@ -49,7 +49,7 @@ x <- zoo[,2:17]
 y <- zoo[,18]
 
 # lambda vector
-lam.vec <- (1:10)/100
+lam.vec <- (1:10)/10
 
 #run 10 fold cross validation across lambdas
 object <- cv.VDA_R(x, y, 10, lam.vec)
