@@ -1,4 +1,4 @@
-print.VDA_LE <-
+print.vda.r <-
 function (x, ...)
 {
   cat ("\n Call: \n")
@@ -9,10 +9,4 @@ function (x, ...)
   
   cat ("\n Training Error: \n")
   print (x$training_error_rate)
-  
-  cat ("\n Number of Active Variables: \n")
-  print (x$nonzeros)
-  
-  cat ("\n Selected Variables with Nonzero Coefficients: \n")
-  print (names(x$feature)[x$selected+1])
 }

@@ -1,20 +1,21 @@
-VDA_LE.default <-
+vda.le.default <-
 function (x, y, lambda1=1/length(y), lambda2=0.01)
 {
-  if ((!is.numeric(lambda1))|lambda1<=0)
-    stop ("lambda1 should be a positive number")
+  if ((!is.numeric(lambda1))|lambda1<0)
+    stop ("lambda1 should be a non-negative number")
   
-  if ((!is.numeric(lambda2))|lambda2<=0)
-    stop ("lambda2 should be a positive number")
+  if ((!is.numeric(lambda2))|lambda2<0)
+    stop ("lambda2 should be a non-negative number")
   
   if (length(y)!=nrow(x))
-    stop("Dimention doesn't match! 
+    stop("Dimension doesn't match! 
          Rows of feature matrix X must be the number of cases")
   
   # initialize input
   cases <- length(y)
   classes <- length(unique(y))
   features <- ncol(x)
+  coefficient<-matrix (0,classes-1,features+1)
   # add intercept col
   feature_i <- as.matrix(cbind(rep(1,nrow(x)),x))
   colnames(feature_i)[1] <- "intercept"
@@ -34,12 +35,19 @@ function (x, y, lambda1=1/length(y), lambda2=0.01)
      
   coefficient<-matrix (return_data$coefficient,classes-1,features+1)
   
+  sumcoeff<-c(0,features)
+  for (j in 1:features+1){
+  	sumcoeff[j] = sum(abs(coefficient[,j]))
+  	#if (is.finite(sumcoeff[j])) sumcoeff[j]=sumcoeff[j]
+ 	#else sumcoeff[j]=1
+  }
+  
   #count nonzero
   selected<-c()
   nonzeros<-0
   for (j in 2:(features+1))
   {
-    if (sum(abs(coefficient[,j]))>1E-6) 
+    if (sumcoeff[j] > 0.000001) 
     {
       nonzeros<-nonzeros+1
       selected<-c(selected,j-1)
@@ -63,7 +71,7 @@ function (x, y, lambda1=1/length(y), lambda2=0.01)
                nonzeros=nonzeros,
                selected=selected,
                call=sys.call ())
-  class (out) <- "VDA_LE"
+  class (out) <- "vda.le"
   
   return(out)
 }

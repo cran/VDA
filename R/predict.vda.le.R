@@ -1,9 +1,9 @@
-predict.VDA_LE <-
+predict.vda.le <-
 function(object, newdata = NULL, ...)
 {
   
-  if (!inherits(object, "VDA_LE")) 
-    stop("predict.VDA_LE can only be used to predict from VDA_LE objects")
+  if (!inherits(object, "vda.le")) 
+    stop("predict.vda.le can only be used to predict from vda.le objects")
   
   if (missing(newdata))
     return(object$predicted)

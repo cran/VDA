@@ -1,21 +1,21 @@
 useDynLib(VDA, .registration = TRUE)
 
-export(VDA_R, cv.VDA_R, VDA_LE, cv.VDA_LE)
+export(vda, cv.vda, vda.r, cv.vda.r, vda.le, cv.vda.le)
 
 import(rgl)
 
-S3method("VDA_R", "default")
-S3method("VDA_LE", "default")
-S3method("cv.VDA_R", "default")
-S3method("cv.VDA_LE", "default")
-S3method("predict", "VDA_R")
-S3method("predict", "VDA_LE")
-S3method("print", "VDA_R")
-S3method("print", "VDA_LE")
-S3method("summary", "VDA_R")
-S3method("summary", "VDA_LE")
-S3method("plot", "cv.VDA_R")
-S3method("plot", "cv.VDA_LE")
+S3method("vda.r", "default")
+S3method("vda.le", "default")
+S3method("cv.vda.r", "default")
+S3method("cv.vda.le", "default")
+S3method("predict", "vda.r")
+S3method("predict", "vda.le")
+S3method("print", "vda.r")
+S3method("print", "vda.le")
+S3method("summary", "vda.r")
+S3method("summary", "vda.le")
+S3method("plot", "cv.vda.r")
+S3method("plot", "cv.vda.le")
 
 
 

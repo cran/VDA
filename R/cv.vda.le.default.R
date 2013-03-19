@@ -1,4 +1,4 @@
-cv.VDA_LE.default <-
+cv.vda.le.default <-
 function(x,y,kfold,lam.vec.1,lam.vec.2)
 {
   if (length(y)!=nrow(x))
@@ -11,11 +11,11 @@ function(x,y,kfold,lam.vec.1,lam.vec.2)
   if (missing(kfold))
     stop("kfold cannot be missing")
       
- y<-as.data.frame(y)
- xy<-cbind(x,y)
- xyran<-xy[sample(nrow(xy),nrow(xy)),]
- x<-xyran[,1:(ncol(xyran)-1)]
- y<-xyran[,ncol(xyran)]
+  y<-as.data.frame(y)
+  xy<-cbind(x,y)
+  xyran<-xy[sample(nrow(xy),nrow(xy)),]
+  x<-xyran[,1:(ncol(xyran)-1)]
+  y<-xyran[,ncol(xyran)]
   n<-length(lam.vec.1)
   m<-length(lam.vec.2)
   lam.error<-matrix(rep(0),nrow=n,ncol=m)
@@ -43,7 +43,7 @@ function(x,y,kfold,lam.vec.1,lam.vec.2)
     		data.train.x <- x[ind.data.train,]
     		data.train.y <- y[ind.data.train]
     
-        	vda.out.train <- VDA_LE(data.train.x,data.train.y,lam.vec.1[i],lam.vec.2[j])
+        	vda.out.train <- vda.le(data.train.x,data.train.y,lam.vec.1[i],lam.vec.2[j])
         	class.pred.test <- predict(vda.out.train,data.test.x)
         	error.fold[fold] <- length(which(as.double(class.pred.test)!=data.test.y))/length(data.test.y)
  		 							#}   
@@ -60,10 +60,10 @@ function(x,y,kfold,lam.vec.1,lam.vec.2)
   lam1.min<-lam.vec.1[lam.min[1,1]]
   lam2.min<-lam.vec.2[lam.min[1,2]]
   lam.opt<-c(lam1.min, lam2.min)
-  est.opt<-(VDA_LE(x,y,lam.opt[[1]],lam.opt[[2]]))$coefficient
+  est.opt<-(vda.le(x,y,lam.opt[[1]],lam.opt[[2]]))$coefficient
   error.cv<-error.cv
   
   out <- list(kfold = kfold, lam.vec.1 = lam.vec.1, lam.vec.2=lam.vec.2, error.cv = error.cv, lam.opt = lam.opt)
-  class(out) <- "cv.VDA_LE"
+  class(out) <- "cv.vda.le"
   out
 }

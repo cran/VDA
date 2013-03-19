@@ -1,14 +1,14 @@
-\name{VDA_LE}
-\alias{VDA_LE}
+\name{vda.le}
+\alias{vda.le}
 \title{
 Multicategory Vertex Discriminant Analysis (VDA) For High-Dimensional Data 
 }
 \description{
-The method of vertex discriminant analysis (VDA) is ideally suited to handle multiple categories and an excess of predictors over training cases. \code{VDA_LE} is an elaboration of VDA that simultaneously conducts classification of \eqn{k} possible categories and variable selection of \emph{p} features, based on a data set of \emph{n} cases.  Variable selection is imposed using \emph{L1} (Lasso) and group Euclidean penalties.
+The method of vertex discriminant analysis (VDA) is ideally suited to handle multiple categories and an excess of predictors over training cases. \code{vda.le} is an elaboration of VDA that simultaneously conducts classification of \eqn{k} possible categories and variable selection of \emph{p} features, based on a data set of \emph{n} cases.  Variable selection is imposed using \emph{L1} (Lasso) and group Euclidean penalties. To use only Lasso penalization, set \eqn{\lambda2}=0. To use only Euclidean penalization, set \eqn{\lambda1}=0. 
 
 }
 \usage{
-  VDA_LE(x, y, lambda1, lambda2)
+  vda.le(x, y, lambda1, lambda2)
 }
 \arguments{
   \item{x}{
@@ -18,15 +18,15 @@ The method of vertex discriminant analysis (VDA) is ideally suited to handle mul
     \emph{n} x 1 vector representing the outcome variable.  Each element denotes which one of the \emph{k} classes that case belongs to
   }
   \item{lambda1}{
-  Tuning parameter to control the lasso penalty.  The default value is \eqn{1/n}.  For determining the optimal \code{lambda1}, refer to \code{\link{cv.VDA_LE}}.
+  Tuning parameter to control the lasso penalty.  The default value is \eqn{1/n}.  For determining the optimal \code{lambda1}, refer to \code{\link{cv.vda.le}}.
   }
   \item{lambda2}{
-  Tuning parameter to control the Euclidean penalty.  The default value is 0.01.  For determining the optimal \code{lambda1}, refer to \code{\link{cv.VDA_LE}}
+  Tuning parameter to control the Euclidean penalty.  The default value is 0.01.  For determining the optimal \code{lambda1}, refer to \code{\link{cv.vda.le}}
   }
 }
 
 \details{
-\code{VDA_LE} carries out cyclic coordinate descent in the context of VDA to minimize the loss function.  By adding lasso (\eqn{L1}-norm) and group Euclidean penalties to the VDA loss function, unnecessary predictors are elimnated, adding parsimony and making the model more interpretable.  Lasso penalties are applied to each predictor coefficient separately, while Euclidean penalties couples the coefficients of a single predictor and penalize the group collectively.  If \code{lambda1=0}, then the overall penalty reduces to only group penalties. When \code{lambda2=0}, then the overall penalty reduces to the lasso.  With these penalties in place, cyclic coordinate descent accelerates estimation of all coefficients.}
+\code{vda.le} carries out cyclic coordinate descent in the context of VDA to minimize the loss function.  By adding lasso (\eqn{L1}-norm) and group Euclidean penalties to the VDA loss function, unnecessary predictors are elimnated, adding parsimony and making the model more interpretable.  Lasso penalties are applied to each predictor coefficient separately, while Euclidean penalties couples the coefficients of a single predictor and penalize the group collectively.  If \code{lambda1=0}, then the overall penalty reduces to only group penalties. When \code{lambda2=0}, then the overall penalty reduces to the lasso.  With these penalties in place, cyclic coordinate descent accelerates estimation of all coefficients.}
 
 \value{
   \item{feature}{
@@ -73,7 +73,7 @@ The method of vertex discriminant analysis (VDA) is ideally suited to handle mul
     \author{
     Edward Grant, Xia Li,  Kenneth Lange, Tong Tong Wu
     
-    Maintainer: Edward Grant \email{egrant@umd.edu}
+    Maintainer: Edward Grant \email{edward.m.grant@gmail.com}
     }
     
     
@@ -84,9 +84,9 @@ The method of vertex discriminant analysis (VDA) is ideally suited to handle mul
     }
     
     \seealso{
-For determining the optimal values for \code{lambda1} and \code{lambda2}, see \code{\link{cv.VDA_LE}}
+For determining the optimal values for \code{lambda1} and \code{lambda2}, see \code{\link{cv.vda.le}}
 
-For VDA without variable selection, see \code{\link{VDA_R}}.
+For VDA without variable selection, see \code{\link{vda.r}}.
 }
   
 \examples{
@@ -99,7 +99,13 @@ x <- zoo[,2:17]
 #outcome class vector
 y <- zoo[,18]
 
-#run VDA
-out<-VDA_LE(x,y)
+#run VDA, Only Lasso Penalization
+out<-vda.le(x,y,lambda2=0)
+
+#run VDA, Only Euclidean Penalization
+out<-vda.le(x,y,lambda1=0)
+
+#run VDA, Lasso and Euclidean Penalization
+out<-vda.le(x,y)
 }
     

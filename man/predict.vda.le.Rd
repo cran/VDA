@@ -1,17 +1,17 @@
-\name{predict.VDA_LE}
-\alias{predict.VDA_LE}
+\name{predict.vda.le}
+\alias{predict.vda.le}
 \title{
-Predict a VDA_LE object.
+Predict a vda.le object.
 }
 \description{
-The predict function for a VDA_LE object.
+The predict function for a vda.le object.
 }
 \usage{
-\method{predict}{VDA_LE}(object, newdata=NULL, ...)
+\method{predict}{vda.le}(object, newdata=NULL, ...)
 }
 \arguments{
   \item{object}{
-An object of class 'VDA_LE', usually the result of a call to \code{\link{VDA_LE}}.
+An object of class 'vda.le', usually the result of a call to \code{\link{vda.le}}.
 }
   \item{newdata}{
 An optional \emph{n} x \emph{p} matrix or data frame containing new data to be classified using vertex discriminant analysis. The data must contain the same number of attributes as the training data. If \code{newdata} is omitted, the training data is used.
@@ -21,13 +21,13 @@ Not used.
 }
 }
 \details{
-The prediction funtion for Vertex Discriminant Analysis (\code{\link{VDA_LE}}). Returns 1 x \emph{n} vector in which each element represents the predicted value for the corresponding case.
+The prediction funtion for Vertex Discriminant Analysis (\code{\link{vda.le}}). Returns 1 x \emph{n} vector in which each element represents the predicted value for the corresponding case.
 }
 
 \author{
 Edward Grant, Xia Li, Kenneth Lange, Tong Tong Wu
 
-Maintainer: Edward Grant \email{egrant@umd.edu}
+Maintainer: Edward Grant \email{edward.m.grant@gmail.com}
 }
 
 
@@ -37,7 +37,7 @@ Lange, K. and Wu, T.T. (2008) An MM Algorithm for Multicategory Vertex Discrimin
 
 
 \seealso{
-\code{\link{VDA_LE}}, \code{\link{summary.VDA_LE}}, \code{\link{print.VDA_LE}}
+\code{\link{vda.le}}, \code{\link{summary.vda.le}}, \code{\link{print.vda.le}}
 }
 
 \examples{
@@ -51,7 +51,7 @@ x <- zoo[,2:17]
 y <- zoo[,18]
 
 #run VDA
-out <- VDA_LE(x,y)
+out <- vda.le(x,y)
 
 onecase <- matrix(c(0,1,1,0,0,0,1,0,1,1,0,0,2,1,0,1),1,16)
 predict(out, onecase)

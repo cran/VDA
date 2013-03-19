@@ -1,13 +1,16 @@
-\name{VDA_R}
-\alias{VDA_R}
+\name{vda.r}
+\alias{vda.r}
+\alias{vda.r.default}
+\alias{vda}
 \title{
 Vertex Discriminant Analysis
 }
 \description{
-Multicategory Vertex Discriminant Analysis for classifying an outcome with \emph{k} possible categories and \emph{p} features, based on a data set of \emph{n} cases. 
+	Multicategory Vertex Discriminant Analysis (VDA) for classifying an outcome with k possible categories and p features, based on a data set of n cases. The default penalty function is Ridge. Lasso, Euclidean, and a mixture of Lasso and Euclidean are also available. Please refer to \code{\link{vda.le}}
 }
 \usage{
-VDA_R(x, y, lambda)
+vda.r(x, y, lambda)
+vda(x, y, lambda)
 }
 \arguments{
   \item{x}{
@@ -17,7 +20,7 @@ VDA_R(x, y, lambda)
 \emph{n} x 1 vector representing the outcome variable.  Each element denotes which one of the \emph{k} classes that case belongs to
 }
   \item{lambda}{
-Tuning constant. The default value is set as \eqn{1/n}.  Can also be found using \code{cv.VDA_R}, which uses K-fold cross validation to determine the optimal value.
+Tuning constant. The default value is set as \eqn{1/n}.  Can also be found using \code{cv.vda.r}, which uses K-fold cross validation to determine the optimal value.
 }
 }
 
@@ -66,14 +69,14 @@ Feature matrix \code{x} with an intercept vector added as the first column. All 
   The matched call
   }
   \item{attr(,"class")}{
-  The function results in an object of class "VDA_R"
+  The function results in an object of class "vda.r"
   }
 }
 
 \author{
 Edward Grant, Xia Li, Kenneth Lange, Tong Tong Wu
 
-Maintainer: Edward Grant \email{egrant@umd.edu}
+Maintainer: Edward Grant \email{edward.m.grant@gmail.com}
 }
 
 
@@ -82,9 +85,9 @@ Lange, K. and Wu, T.T. (2008) An MM Algorithm for Multicategory Vertex Discrimin
 }
 
 \seealso{
-For determining the optimal values for \code{lambda}, refer to \code{\link{cv.VDA_R}}.
+For determining the optimal values for \code{lambda}, refer to \code{\link{cv.vda.r}}.
 
-For high-dimensional setting and conduct variable selection, please refer to \code{\link{VDA_LE}}.
+For high-dimensional setting and conduct variable selection, please refer to \code{\link{vda.le}}.
 }
 
 \examples{
@@ -98,6 +101,6 @@ x <- zoo[,2:17]
 y <- zoo[,18]
 
 #run VDA
-out <- VDA_R(x, y)
+out <- vda.r(x, y)
 }
 

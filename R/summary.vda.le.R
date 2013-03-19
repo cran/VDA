@@ -1,4 +1,4 @@
-summary.VDA_LE <-
+summary.vda.le <-
 function (object, ...)
 {
   cat ("\n Call: \n")

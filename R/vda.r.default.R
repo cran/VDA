@@ -1,4 +1,4 @@
-VDA_R.default <-
+vda.r.default <-
 function (x, y, lambda=1/length(y))
 {
   
@@ -40,7 +40,7 @@ function (x, y, lambda=1/length(y))
               coefficient = matrix (return_data$coefficient,classes-1,features+1),
               training_error_rate = return_data$training_error_rate,
               call=sys.call ())
-  class (out) <- "VDA_R"
+  class (out) <- "vda.r"
   
   return(out)
 }

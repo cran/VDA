@@ -1,31 +1,32 @@
 
-\name{plot.cv.VDA_R}
-\alias{plot.cv.VDA_R}
+\name{plot.cv.vda.r}
+\alias{plot.cv.vda.r}
+\alias{plot.cv.vda}
 \title{
-Plot a  cv.VDA_R object
+Plot a  cv.vda.r object
 }
 \description{
 Plot a the cross validation error across lambda values
 }
 \usage{
-\method{plot}{cv.VDA_R}(x, ...)
+\method{plot}{cv.vda.r}(x, ...)
 }
 \arguments{
   \item{x}{
-Object of class 'cv.VDA_R', the result of a call to \code{\link{cv.VDA_R}}.
+Object of class 'cv.vda.r', the result of a call to \code{\link{cv.vda.r}}.
 }
   \item{\dots}{
 Not used. 
 }
 }
 \details{
-Plots the k-fold cross validation testing error for values across a different lambda values. Use \code{\link{cv.VDA_R}} to produce the object of class "cv.VDA_R."
+Plots the k-fold cross validation testing error for values across a different lambda values. Use \code{\link{cv.vda.r}} to produce the object of class "cv.vda.r."
 }
 
 \author{
 Edward Grant, Xia Li, Kenneth Lange, Tong Tong Wu
 
-Maintainer: Edward Grant \email{egrant@umd.edu}
+Maintainer: Edward Grant \email{edward.m.grant@gmail.com}
 }
 
 
@@ -35,7 +36,7 @@ Lange, K. and Wu, T.T.  (2008) An MM Algorithm for Multicategory Vertex Discrimi
 
 
 \seealso{
-\code{\link{VDA_R}}, \code{\link{cv.VDA_R}}
+\code{\link{vda.r}}, \code{\link{cv.vda.r}}
 }
 
 \examples{
@@ -52,7 +53,7 @@ y <- zoo[,18]
 lam.vec <- (1:10)/10
 
 #run 10 fold cross validation across lambdas
-object <- cv.VDA_R(x, y, 10, lam.vec)
+object <- cv.vda.r(x, y, 10, lam.vec)
 
 #plot
 plot(object)

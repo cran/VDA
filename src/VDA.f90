@@ -32,28 +32,6 @@
 !
       CONTAINS
 !
-      SUBROUTINE READ_DATA(CLASS,FEATURE,CASES,FEATURES,INPUT_FILE)
-!
-!     This subroutine reads in the data and initializes constants and arrays.
-!
-      IMPLICIT NONE
-      INTEGER :: CASES,FEATURES
-      INTEGER, ALLOCATABLE, DIMENSION(:) :: CLASS
-      REAL(KIND=DBLE), ALLOCATABLE, DIMENSION(:,:) :: COEFFICIENT,FEATURE
-      CHARACTER(LEN=100) :: INPUT_FILE
-!
-      INTEGER :: I,INPUT_UNIT=1
-!
-!     Read the data.  Fill in the intercept coefficient for each case.
-!
-      OPEN(UNIT=INPUT_UNIT,FILE=INPUT_FILE)
-      DO I = 1,CASES
-         READ(INPUT_UNIT,*) FEATURE(I,2:FEATURES+1),CLASS(I)
-         FEATURE(I,1) = ONE
-      END DO
-      CLOSE(INPUT_UNIT)
-      END SUBROUTINE READ_DATA
-
       SUBROUTINE STANDARDIZE_VECTOR(V)
 !
 !     This subroutine standardizes the vector V so that it has mean 0

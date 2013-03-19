@@ -1,17 +1,18 @@
-\name{predict.VDA_R}
-\alias{predict.VDA_R}
+\name{predict.vda.r}
+\alias{predict.vda.r}
+\alias{predict.vda}
 \title{
-Predict a VDA_R object.
+Predict a vda.r object.
 }
 \description{
-The predict function for a VDA_R object.
+The predict function for a vda.r object.
 }
 \usage{
-\method{predict}{VDA_R}(object, newdata=NULL, ...)
+\method{predict}{vda.r}(object, newdata=NULL, ...)
 }
 \arguments{
   \item{object}{
-An object of class 'VDA_R', usually the result of a call to \code{\link{VDA_R}}.
+An object of class 'vda.r', usually the result of a call to \code{\link{vda.r}}.
 }
   \item{newdata}{
 An optional \emph{n} x \emph{p} matrix or data frame containing new data to be classified using VDA. The data must contain the same number of attributes as the training data. If \code{newdata} is omitted, the training data is used.
@@ -21,13 +22,13 @@ Not used.
 }
 }
 \details{
-The prediction funtion for Vertex Discriminant Analysis (\code{\link{VDA_R}}). Returns 1 x \emph{n} vector in which each element represents the predicted value for the corresponding case.
+The prediction funtion for Vertex Discriminant Analysis (\code{\link{vda.r}}). Returns 1 x \emph{n} vector in which each element represents the predicted value for the corresponding case.
 }
 
 \author{
 Edward Grant, Xia Li, Kenneth Lange, Tong Tong Wu
 
-Maintainer: Edward Grant \email{egrant@umd.edu}
+Maintainer: Edward Grant \email{edward.m.grant@gmail.com}
 }
 
 
@@ -37,7 +38,7 @@ Lange, K. and Wu, T.T. (2008) An MM Algorithm for Multicategory Vertex Discrimin
 
 
 \seealso{
-\code{\link{VDA_R}}, \code{\link{summary.VDA_R}}, \code{\link{print.VDA_R}}
+\code{\link{vda.r}}, \code{\link{summary.vda.r}}, \code{\link{print.vda.r}}
 }
 
 \examples{
@@ -51,7 +52,7 @@ x <- zoo[,2:17]
 y <- zoo[,18]
 
 #run VDA
-out <- VDA_R(x,y)
+out <- vda.r(x,y)
 
 onecase <- matrix(c(0,1,1,0,0,0,1,0,1,1,0,0,2,1,0,1),1,16)
 predict(out, onecase)

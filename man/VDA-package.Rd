@@ -12,7 +12,7 @@ This package provides functions to optimize and execute Multicategory Vertex Dis
 \tabular{ll}{
 Package: \tab VDA\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 1.02\cr
 Date: \tab 2012-02-27\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
@@ -21,7 +21,7 @@ LazyLoad: \tab yes\cr
 \author{
 Edward Grant, Xia Li, Kenneth Lange, Tong Tong Wu
 
-Maintainer: Edward Grant \email{egrant@umd.edu}
+Maintainer: Edward Grant \email{edward.m.grant@gmail.com}
 }
 \references{
 Lange, K. and Wu, T.T. (2008) An MM Algorithm for Multicategory Vertex Discriminant Analysis. Journal of Computational and Graphical Statistics, Volume 17, No 3, 527-544.
@@ -40,5 +40,5 @@ x <- zoo[,2:17]
 y <- zoo[,18]
 
 #run VDA
-out <- VDA_R(x, y)
+out <- vda.r(x, y)
 }

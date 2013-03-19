@@ -1,4 +1,4 @@
-cv.VDA_R.default <-
+cv.vda.r.default <-
 function(x,y,k,lam.vec)
 {
   if (missing(k))
@@ -33,7 +33,7 @@ function(x,y,k,lam.vec)
     data.train.y <- y[ind.data.train]
     
     for (ll in 1:length(lam.vec)){
-      vda.out.train <- VDA_R(data.train.x,data.train.y,lambda=lam.vec[ll])
+      vda.out.train <- vda.r(data.train.x,data.train.y,lambda=lam.vec[ll])
       class.pred.test <- predict(vda.out.train,data.test.x)
       error.cv[ll,fold] <- length(which(as.double(class.pred.test)!=data.test.y))/length(data.test.y)
     }
@@ -44,7 +44,7 @@ function(x,y,k,lam.vec)
 
   out=list(k = k, lam.vec = lam.vec, mean.error = mean.error, lam.opt = lam.opt, error.cv = error.cv)
     
-  class(out) <- "cv.VDA_R"
+  class(out) <- "cv.vda.r"
   out
 
 }
