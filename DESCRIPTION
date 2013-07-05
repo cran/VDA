@@ -1,16 +1,16 @@
 Package: VDA
 Type: Package
 Title: VDA
-Version: 1.02
-Date: 2013-19-03
-Author: Edward Grant, Xia Li, Kenneth Lange, Tong Tong Wu
+Version: 1.3
+Date: 2013-07-05
+Author: Edward Grant, Xia Li,  Kenneth Lange, Tong Tong Wu
 Maintainer: Edward Grant <edward.m.grant@gmail.com>
-Description: Multicategory Vertex Discriminant Analysis
+Description: Multicategory Vertex Discriminant Analysis: A novel supervised multicategory classification method
 License: GPL-2
 LazyLoad: yes
 LazyData: yes
 Depends: rgl
-Packaged: 2013-03-20 03:43:53 UTC; emgrant
+Packaged: 2013-07-08 23:29:33 UTC; emgrant
 NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2013-03-20 17:38:18
+Date/Publication: 2013-07-09 08:07:32

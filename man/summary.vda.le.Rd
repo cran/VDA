@@ -31,7 +31,8 @@ Maintainer: Edward Grant \email{edward.m.grant@gmail.com}
 }
 \examples{
 
-# load data
+# load zoo data
+# column 1 is name, columns 2:17 are features, column 18 is class
 data(zoo)
 
 # feature matrix without intercept

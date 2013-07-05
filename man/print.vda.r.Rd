@@ -40,7 +40,8 @@ Lange, K. and Wu, T.T.  (2008) An MM Algorithm for Multicategory Vertex Discrimi
 }
 
 \examples{
-# load data
+# load zoo data
+# column 1 is name, columns 2:17 are features, column 18 is class
 data(zoo)
 
 # feature matrix without intercept

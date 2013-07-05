@@ -90,7 +90,8 @@ For VDA without variable selection, see \code{\link{vda.r}}.
 }
   
 \examples{
-#load dataset from package
+# load zoo data
+# column 1 is name, columns 2:17 are features, column 18 is class
 data(zoo)
 
 #matrix containing all predictor vectors
@@ -99,13 +100,24 @@ x <- zoo[,2:17]
 #outcome class vector
 y <- zoo[,18]
 
-#run VDA, Only Lasso Penalization
-out<-vda.le(x,y,lambda2=0)
+#run VDA, Only Lasso Penalization, Set lambda2=0 
+outlasso <-vda.le(x,y,lambda1=.02,lambda2=0)
 
-#run VDA, Only Euclidean Penalization
-out<-vda.le(x,y,lambda1=0)
+#run VDA, Only Euclidean Penalization, Set lambda1=0 
+outeuclid <-vda.le(x,y,lambda1=0,lambda2=0.04)
 
 #run VDA, Lasso and Euclidean Penalization
-out<-vda.le(x,y)
+outLE<-vda.le(x,y,lambda1=0.009,lambda2=0.05)
+summary(outLE)
+
+#Predict five cases based on VDA, Lasso and Euclidean Penalization
+fivecases <- matrix(0,5,16)
+fivecases[1,] <- c(1,0,0,1,0,0,0,1,1,1,0,0,4,0,1,0)
+fivecases[2,] <- c(1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1)
+fivecases[3,] <- c(0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0)
+fivecases[4,] <- c(0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0)
+fivecases[5,] <- c(0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0)
+predict(outLE, fivecases)
+
 }
     

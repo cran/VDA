@@ -57,8 +57,8 @@ function(x,y,kfold,lam.vec.1,lam.vec.2)
   
   # output
   lam.opt<-c()
-  lam1.min<-lam.vec.1[lam.min[1,1]]
-  lam2.min<-lam.vec.2[lam.min[1,2]]
+  lam1.min<-lam.vec.1[lam.min[nrow(lam.min),1]]
+  lam2.min<-lam.vec.2[lam.min[nrow(lam.min),2]]
   lam.opt<-c(lam1.min, lam2.min)
   est.opt<-(vda.le(x,y,lam.opt[[1]],lam.opt[[2]]))$coefficient
   error.cv<-error.cv

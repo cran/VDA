@@ -52,9 +52,21 @@ y <- zoo[,18]
 # lambda vector
 lam.vec <- (1:10)/10
 
-#run 10 fold cross validation across lambdas
-object <- cv.vda.r(x, y, 10, lam.vec)
+# run 10 fold cross validation across lambdas
+cv <- cv.vda.r(x, y, 10, lam.vec)
 
-#plot
-plot(object)
+# plot CV results
+plot(cv)
+
+# Perform VDA with CV-selected optimal lambda
+out <- vda.r(x,y,cv$lam.opt)
+
+# Predict five cases based on VDA
+fivecases <- matrix(0,5,16)
+fivecases[1,] <- c(1,0,0,1,0,0,0,1,1,1,0,0,4,0,1,0)
+fivecases[2,] <- c(1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1)
+fivecases[3,] <- c(0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0)
+fivecases[4,] <- c(0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0)
+fivecases[5,] <- c(0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0)
+predict(out, fivecases)
 }

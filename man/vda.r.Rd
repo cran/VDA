@@ -91,7 +91,8 @@ For high-dimensional setting and conduct variable selection, please refer to \co
 }
 
 \examples{
-#load dataset from package
+# load zoo data
+# column 1 is name, columns 2:17 are features, column 18 is class
 data(zoo)
 
 #matrix containing all predictor vectors
@@ -102,5 +103,14 @@ y <- zoo[,18]
 
 #run VDA
 out <- vda.r(x, y)
+
+#Predict five cases based on VDA
+fivecases <- matrix(0,5,16)
+fivecases[1,] <- c(1,0,0,1,0,0,0,1,1,1,0,0,4,0,1,0)
+fivecases[2,] <- c(1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1)
+fivecases[3,] <- c(0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0)
+fivecases[4,] <- c(0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0)
+fivecases[5,] <- c(0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0)
+predict(out, fivecases)
 }
 

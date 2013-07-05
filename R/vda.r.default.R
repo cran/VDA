@@ -15,7 +15,7 @@ function (x, y, lambda=1/length(y))
   features <- ncol(x)
   # add intercept col
   feature_i <- as.matrix(cbind(rep(1,nrow(x)),x))
-  colnames(feature_i)[1] <- "intercept"
+#  colnames(feature_i)[1] <- "intercept"
 
   return_data <- .Fortran ("VDA", 
                            stand.feature = as.double (feature_i),
@@ -31,7 +31,7 @@ function (x, y, lambda=1/length(y))
   
   out <- list (feature = feature_i,
               stand.feature = matrix (return_data$stand.feature,cases,features+1),
-              classvec = class,
+              class = y,
               cases = cases,
               classes = classes,
               features = features,

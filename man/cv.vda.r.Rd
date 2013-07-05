@@ -69,7 +69,8 @@ Lange, K. and Wu, T.T. (2008) An MM Algorithm for Multicategory Vertex Discrimin
 }
 
 \examples{
-# load data
+# load zoo data
+# column 1 is name, columns 2:17 are features, column 18 is class
 data(zoo)
 
 # feature matrix without intercept
@@ -81,9 +82,19 @@ y <- zoo[,18]
 # lambda vector
 lam.vec <- (1:10)/10
 
-# searching for the best lambda with 10-fold cross validation
-obj <- cv.vda.r(x, y, 10, lam.vec)
+# searching for the best lambda with 10-fold cross validation and plot cv
+cv <- cv.vda.r(x, y, 10, lam.vec)
+plot(cv)
 
 # run VDA
-out <- vda.r(x,y,obj$lam.opt)
+out <- vda.r(x,y,cv$lam.opt)
+
+# Predict five cases based on VDA
+fivecases <- matrix(0,5,16)
+fivecases[1,] <- c(1,0,0,1,0,0,0,1,1,1,0,0,4,0,1,0)
+fivecases[2,] <- c(1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1)
+fivecases[3,] <- c(0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0)
+fivecases[4,] <- c(0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0)
+fivecases[5,] <- c(0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0)
+predict(out, fivecases)
 }

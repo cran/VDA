@@ -12,8 +12,8 @@ This package provides functions to optimize and execute Multicategory Vertex Dis
 \tabular{ll}{
 Package: \tab VDA\cr
 Type: \tab Package\cr
-Version: \tab 1.02\cr
-Date: \tab 2012-02-27\cr
+Version: \tab 1.3\cr
+Date: \tab 2013-Jul-05\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -39,6 +39,27 @@ x <- zoo[,2:17]
 #outcome class vector
 y <- zoo[,18]
 
-#run VDA
+#run VDA (ridge penalty)
 out <- vda.r(x, y)
+
+#Predict five cases based on VDA 
+fivecases <- matrix(0,5,16)
+fivecases[1,] <- c(1,0,0,1,0,0,0,1,1,1,0,0,4,0,1,0)
+fivecases[2,] <- c(1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1)
+fivecases[3,] <- c(0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0)
+fivecases[4,] <- c(0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0)
+fivecases[5,] <- c(0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0)
+predict(out, fivecases)
+
+#run vda.le (lasso and euclidean penalty)
+outLE <- vda.le(x, y)
+
+#Predict five cases based on VDA 
+fivecases <- matrix(0,5,16)
+fivecases[1,] <- c(1,0,0,1,0,0,0,1,1,1,0,0,4,0,1,0)
+fivecases[2,] <- c(1,0,0,1,0,0,1,1,1,1,0,0,4,1,0,1)
+fivecases[3,] <- c(0,1,1,0,1,0,0,0,1,1,0,0,2,1,1,0)
+fivecases[4,] <- c(0,0,1,0,0,1,1,1,1,0,0,1,0,1,0,0)
+fivecases[5,] <- c(0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0)
+predict(outLE, fivecases)
 }
